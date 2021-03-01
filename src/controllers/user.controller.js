@@ -19,9 +19,10 @@ it takes the user's unique username and password.
 exports.registration = async (req, res) => {
   let newUser = new userModel(req.body);
   try {
-    //Save user and return them
+    //Save user and redirect them to their chat page.
     await newUser.save();
-    res.status(200).send(newUser);
+    req.session.username = req.body.username;
+    res.status(302).redirect("/chat");
   } catch (e) {
     //Log error if username name exist
     if (e.keyPattern.username === 1) {
@@ -47,7 +48,7 @@ exports.login = async (req, res) => {
       //Compare the password that the user entered to the hash password.
       if (await bcrypt.compare(req.body.password, user.password)) {
         req.session.username = user.username;
-        res.status(200).send({ user });
+        res.status(302).redirect("/chat");
       } else {
         //Log Errors.
         res.status(400).send("Unable to login");

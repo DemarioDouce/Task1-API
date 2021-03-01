@@ -8,7 +8,7 @@ const chatSchema = new mongoose.Schema(
   {
     message: { type: String, required: true, trim: true },
     postedBy: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: String,
       required: true,
       ref: "user",
     },
@@ -24,6 +24,7 @@ chatSchema.methods.toJSON = function () {
   //Delete what you do not want to return using the attributes.
   delete chatObject._id;
   delete chatObject.__v;
+  delete chatObject.postedBy;
   return chatObject;
 };
 
