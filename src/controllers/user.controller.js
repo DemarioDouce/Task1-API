@@ -22,3 +22,29 @@ exports.registration = async (req, res) => {
     }
   }
 };
+
+/*This part of the code handle user login.
+it takes the user's unique username and password.
+ */
+exports.login = async (req, res) => {
+  let user = await userModel.findOne({ username: req.body.username });
+  try {
+    //Check if the user does not exist.
+    if (user === null) {
+      //Log Errors.
+      res.status(400).send("Unable to login");
+    } else {
+      //Compare the password that the user entered to the hash password.
+      if (await bcrypt.compare(req.body.password, user.password)) {
+        req.session.username = user.username;
+        res.status(200).send({ user });
+      } else {
+        //Log Errors.
+        res.status(400).send("Unable to login");
+      }
+    }
+  } catch (e) {
+    //Log Errors.
+    res.status(400).send(e);
+  }
+};

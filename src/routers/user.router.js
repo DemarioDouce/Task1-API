@@ -8,5 +8,7 @@ var user = require("../controllers/user.controller");
 
 //handle a post request made to /registration.
 router.post("/registration", user.registration);
+//handle a post request made to /login.
+router.post("/login", user.login);
 
 module.exports = router;

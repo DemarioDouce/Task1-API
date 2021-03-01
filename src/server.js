@@ -6,6 +6,9 @@ require("./db/mongo.db");
 const { config } = require("dotenv");
 //Routers.
 const userRouter = require("./routers/user.router");
+//Load express-session
+const session = require("express-session");
+
 //Invoking the dotenv config.
 config();
 const app = express();
@@ -14,8 +17,18 @@ const port = process.env.PORT;
 
 app.use(express.json());
 
+//Session config
+app.use(
+  session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
 //User router.
 app.use(userRouter);
+
 app.listen(port, () => {
   console.log("Server is up and running on port " + port + ".");
 });
