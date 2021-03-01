@@ -4,24 +4,27 @@ const mongoose = require("mongoose");
 var Filter = require("bad-words");
 
 //Schema setup.
-const chatSchema = new mongoose.Schema({
-  message: { type: String, required: true, trim: true },
-  timestamps: true,
-  postedBy: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "user",
+const chatSchema = new mongoose.Schema(
+  {
+    message: { type: String, required: true, trim: true },
+    postedBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "user",
+    },
   },
-});
+  { timestamps: true }
+);
 
 //This is where you specify what you would like to return.
-userSchema.methods.toJSON = function () {
+chatSchema.methods.toJSON = function () {
   let chatProfile = this;
   let chatObject = chatProfile.toObject();
 
   //Delete what you do not want to return using the attributes.
   delete chatObject._id;
   delete chatObject.__v;
-  return userObject;
+  return chatObject;
 };
 
 //filter out the badwords before saving.
