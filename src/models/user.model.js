@@ -14,6 +14,18 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+//This is where you specify what you would like to return.
+userSchema.methods.toJSON = function () {
+  let userProfile = this;
+  let userObject = userProfile.toObject();
+
+  //Delete what you do not want to return using the attributes.
+  delete userObject._id;
+  delete userObject.password;
+  delete userObject.__v;
+  return userObject;
+};
+
 //hash the plain text password before saving.
 userSchema.pre("save", async function (next) {
   let user = this;

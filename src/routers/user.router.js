@@ -6,7 +6,7 @@ const router = new express.Router();
 //Load the 'user' controller.
 var user = require("../controllers/user.controller");
 
-//handle a get request made to /.
-router.get("/", user.init);
+//handle a post request made to /registration.
+router.post("/registration", user.registration);
 
 module.exports = router;
