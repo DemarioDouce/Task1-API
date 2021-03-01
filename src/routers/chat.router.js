@@ -7,7 +7,10 @@ const router = new express.Router();
 var chat = require("../controllers/chat.controller");
 
 //handle a get request made to /chat.
-router.get("/chat", chat.chat);
+router.get("/chat", chat.allChat);
+
+//handle a get request made to /chat.
+router.get("/chat/:id", chat.allChat);
 //handle a post request made to /chat/create.
 router.post("/chat/create", chat.createChat);
 //handle a patch request made to /chat/update/:id.
