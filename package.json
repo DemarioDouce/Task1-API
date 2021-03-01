@@ -1,0 +1,30 @@
+{
+  "name": "Task1-API",
+  "version": "1.0",
+  "description": "Create an application similar to Twitter.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DemarioDouce/Task1-API.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DemarioDouce/Task1-API/issues"
+  },
+  "homepage": "https://github.com/DemarioDouce/Task1-API#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.18"
+  }
+}
