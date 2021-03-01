@@ -41,3 +41,8 @@ it("Should pass login user.", async () => {
     })
     .expect(200);
 });
+
+//Testing "logout user".
+it("Should pass logout user.", async () => {
+  await request(app).post("/logout").expect(302);
+});

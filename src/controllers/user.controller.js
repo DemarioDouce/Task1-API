@@ -3,6 +3,16 @@ const userModel = require("../models/user.model");
 //Load bcrypt.
 const bcrypt = require("bcrypt");
 
+/*This part of the code handle index page.
+ */
+exports.index = async (req, res) => {
+  try {
+    res.status(200).send("Hello World.");
+  } catch (e) {
+    //Log errors.
+    res.status(400).send(e);
+  }
+};
 /*This part of the code handle user registration.
 it takes the user's unique username and password.
  */
@@ -43,6 +53,20 @@ exports.login = async (req, res) => {
         res.status(400).send("Unable to login");
       }
     }
+  } catch (e) {
+    //Log Errors.
+    res.status(400).send(e);
+  }
+};
+
+/*This part of the code handle user logout.
+ */
+exports.logout = async (req, res) => {
+  try {
+    //Terminate the user's session.
+    req.session.destroy((e) => {
+      res.status(302).redirect("/");
+    });
   } catch (e) {
     //Log Errors.
     res.status(400).send(e);
