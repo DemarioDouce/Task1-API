@@ -6,6 +6,7 @@ require("./db/mongo.db");
 const { config } = require("dotenv");
 //Routers.
 const userRouter = require("./routers/user.router");
+const chatRouter = require("./routers/chat.router");
 //Load express-session
 const session = require("express-session");
 
@@ -28,6 +29,8 @@ app.use(
 
 //User router.
 app.use(userRouter);
+//Chat router.
+app.use(chatRouter);
 
 module.exports = app.listen(port, () => {
   console.log("Server is up and running on port " + port + ".");
