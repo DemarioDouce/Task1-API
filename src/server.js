@@ -29,6 +29,6 @@ app.use(
 //User router.
 app.use(userRouter);
 
-app.listen(port, () => {
+module.exports = app.listen(port, () => {
   console.log("Server is up and running on port " + port + ".");
 });
