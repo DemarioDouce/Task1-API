@@ -66,7 +66,7 @@ it("Should pass creating a chat.", async () => {
   await request(app)
     .post("/chat/create")
     .send({
-      message: "Hello world.",
+      message: "",
     })
     .expect(200);
 });
@@ -76,8 +76,8 @@ it("Should pass updating a chat by id.", async () => {
   await request(app)
     .patch("/chat/update/:id")
     .send({
-      message: "ewfwefe",
-      postedBy: "speer",
+      message: "",
+      postedBy: "",
     })
     .expect(200);
 });
