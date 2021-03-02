@@ -6,7 +6,7 @@ var expect = require("chai").expect;
 const app = require("../src/server");
 
 /**
- * Testing get all user endpoint.
+ * Testing all user endpoint.
  */
 
 //Testing "registration of new user".
@@ -45,4 +45,44 @@ it("Should pass login user.", async () => {
 //Testing "logout user".
 it("Should pass logout user.", async () => {
   await request(app).post("/logout").expect(302);
+});
+
+/**
+ * Testing all chat endpoint.
+ */
+
+//Testing "get all chat".
+it("Should pass get all chat.", async () => {
+  await request(app).get("/chat").expect(200);
+});
+
+//Testing "get Single Chat by id".
+it("Should pass get a single chat by id.", async () => {
+  await request(app).get("/chat/:id").expect(200);
+});
+
+//Testing "creat a chat".
+it("Should pass creating a chat.", async () => {
+  await request(app)
+    .post("/chat/create")
+    .send({
+      message: "Hello world.",
+    })
+    .expect(200);
+});
+
+//Testing "updating a chat by id".
+it("Should pass updating a chat by id.", async () => {
+  await request(app)
+    .patch("/chat/update/:id")
+    .send({
+      message: "ewfwefe",
+      postedBy: "speer",
+    })
+    .expect(200);
+});
+
+//Testing "deleting a chat by id".
+it("Should pass deleting a chat by id.", async () => {
+  await request(app).delete("/chat/delete/:id").expect(200);
 });

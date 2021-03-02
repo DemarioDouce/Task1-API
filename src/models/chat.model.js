@@ -1,6 +1,7 @@
 //Load the mongoose module and Schema object.
 const mongoose = require("mongoose");
-//Load badwords.
+//Load npm module "badwords".
+//A javascript filter for badwords.
 var Filter = require("bad-words");
 
 //Schema setup.

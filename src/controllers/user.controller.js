@@ -1,9 +1,10 @@
 //Load the 'user' mongoose model.
 const userModel = require("../models/user.model");
-//Load bcrypt.
+//Loads npm module "bcrypt".
+//A library to help you hash passwords.
 const bcrypt = require("bcrypt");
 
-/*This part of the code handle index page.
+/*This part of the code handles the endpoint /.
  */
 exports.index = async (req, res) => {
   try {
@@ -15,6 +16,7 @@ exports.index = async (req, res) => {
 };
 /*This part of the code handle user registration.
 it takes the user's unique username and password.
+handles: post url/registration
  */
 exports.registration = async (req, res) => {
   let newUser = new userModel(req.body);
@@ -36,6 +38,7 @@ exports.registration = async (req, res) => {
 
 /*This part of the code handle user login.
 it takes the user's unique username and password.
+handles: post url/login
  */
 exports.login = async (req, res) => {
   let user = await userModel.findOne({ username: req.body.username });
@@ -61,6 +64,7 @@ exports.login = async (req, res) => {
 };
 
 /*This part of the code handle user logout.
+handles: post url/logout
  */
 exports.logout = async (req, res) => {
   try {

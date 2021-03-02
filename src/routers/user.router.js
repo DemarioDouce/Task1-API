@@ -12,7 +12,6 @@ router.get("/", user.index);
 router.post("/registration", user.registration);
 //handle a post request made to /login.
 router.post("/login", user.login);
-
 //handle a post request made to /logout.
 router.post("/logout", user.logout);
 

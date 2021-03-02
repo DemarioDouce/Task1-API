@@ -1,6 +1,7 @@
 // Load the mongoose module and Schema object.
 const mongoose = require("mongoose");
-//Load bcrypt.
+//Loads npm module "bcrypt".
+//A library to help you hash passwords.
 const bcrypt = require("bcrypt");
 
 //Schema setup.
