@@ -14,8 +14,8 @@ it("Should registration user.", async () => {
   await request(app)
     .post("/registration")
     .send({
-      username: "speer",
-      password: "ilovedoingthis",
+      username: "",
+      password: "",
     })
     .expect(200);
 });
@@ -36,8 +36,8 @@ it("Should pass login user.", async () => {
   await request(app)
     .post("/login")
     .send({
-      username: "speer",
-      password: "ilovedoingthis",
+      username: "",
+      password: "",
     })
     .expect(200);
 });
