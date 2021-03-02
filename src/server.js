@@ -7,6 +7,7 @@ const { config } = require("dotenv");
 //Routers.
 const userRouter = require("./routers/user.router");
 const chatRouter = require("./routers/chat.router");
+const tweetRouter = require("./routers/tweet.router");
 //Load express-session
 const session = require("express-session");
 
@@ -31,6 +32,8 @@ app.use(
 app.use(userRouter);
 //Chat router.
 app.use(chatRouter);
+//tweet router
+app.use(tweetRouter);
 
 module.exports = app.listen(port, () => {
   console.log("Server is up and running on port " + port + ".");
